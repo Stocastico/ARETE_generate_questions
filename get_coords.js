@@ -57,11 +57,12 @@ function fill_with_lat_lon() {
   };
 
   function save_json() {
-    const contentType = "text/json"
+    const contentType = "text/plain"
     const filename = document.getElementById("basic-name").value + ".json";
 
     const content = new Object();
     content.quizName = filename;
+    console.log("Content object: ", content);
 
     const questions = [];
 
@@ -86,10 +87,15 @@ function fill_with_lat_lon() {
             questions.push(q);
         }
     }
-
     content.questions = questions;
     
-    jsonObj = JSON.parse(JSON.stringify(content));
+    content_str = JSON.stringify(content);
 
-    download_to_file(jsonObj, filename, contentType);
+    console.log("content: ", content_str);
+
+    // jsonObj = JSON.parse(content_str);
+
+    // console.log("JSON object: ", jsonObj);
+
+    download_to_file(content_str, filename, contentType);
   }
