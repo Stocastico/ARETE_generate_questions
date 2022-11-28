@@ -59,9 +59,37 @@ function fill_with_lat_lon() {
   function save_json() {
     const contentType = "text/json"
     const filename = document.getElementById("basic-name").value + ".json";
-    var content = '{"name": ' + filename + ', "locations":[';
 
-    content = content + "}";
+    const content = new Object();
+    content.quizName = filename;
 
-    download_to_file(content, filename, contentType);
+    const questions = [];
+
+    var table = document.getElementById('table-body');
+    if (table) {
+        console.log("Processing table elements")
+        console.log("There are " + table.rows.length + " rows")
+        for (let row of table.rows) 
+        {
+            let loc = row.cells[0].innerText;
+            let dif = row.cells[1].innerText;
+            let lat = row.cells[2].innerText;
+            let lon = row.cells[3].innerText;
+
+            const q = {
+                location: loc,
+                difficulty: dif,
+                latitude: lat,
+                longitude: lon
+                };
+
+            questions.push(q);
+        }
+    }
+
+    content.questions = questions;
+    
+    jsonObj = JSON.parse(JSON.stringify(content));
+
+    download_to_file(jsonObj, filename, contentType);
   }
