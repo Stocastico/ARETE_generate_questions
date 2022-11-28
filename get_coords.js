@@ -19,7 +19,7 @@ function fill_with_lat_lon() {
                     return response.json();
                 })
                 .then((json_) => {
-                    //console.log("json: ", json_)
+                    console.log("json: ", json_)
                     return json_.query.pages;
                 })
                 .catch((error) => {
@@ -30,17 +30,21 @@ function fill_with_lat_lon() {
             
             const getData = async () => {
                 let pages = await getJsonData()
-                //console.log("data: ", pages);
+                console.log("data: ", pages);
                 var page = pages[Object.keys(pages)[0]];
                 var lat = page.coordinates[0].lat
                 var lon = page.coordinates[0].lon
                 console.log("Latitute: " + lat);
                 console.log("Longitude: " + lon);
-                row.cells[1].innerText = lat;
-                row.cells[2].innerText = lon;
+                row.cells[2].innerText = lat;
+                row.cells[3].innerText = lon;
             }
 
             getData();
         }
     }
+  }
+
+  function save_json() {
+    
   }

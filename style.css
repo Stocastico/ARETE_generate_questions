@@ -1,0 +1,27 @@
+#tab {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+}
+.location {
+    width: 25%;
+    background: tomato;
+}
+.difficulty {
+    width: 5%;
+    background: turquoise
+}
+.coordinate {
+    width: 10%;
+}
+  /* see me */
+td {
+    border: solid;
+}
+
+.description {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
