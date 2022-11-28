@@ -36,8 +36,8 @@ function fill_with_lat_lon() {
                 var lon = page.coordinates[0].lon
                 console.log("Latitute: " + lat);
                 console.log("Longitude: " + lon);
-                row.cells[2].innerText = lat;
-                row.cells[3].innerText = lon;
+                row.cells[2].innerText = (Math.round(lat * 100) / 100).toFixed(3);
+                row.cells[3].innerText = (Math.round(lon * 100) / 100).toFixed(3);
             }
 
             getData();
