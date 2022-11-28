@@ -45,6 +45,23 @@ function fill_with_lat_lon() {
     }
   }
 
-  function save_json() {
+  const download_to_file = (content, filename, contentType) => {
+    const a = document.createElement('a');
+    const file = new Blob([content], {type: contentType});
     
+    a.href= URL.createObjectURL(file);
+    a.download = filename;
+    a.click();
+    
+    URL.revokeObjectURL(a.href);
+  };
+
+  function save_json() {
+    const contentType = "text/json"
+    const filename = document.getElementById("basic-name").value + ".json";
+    var content = '{"name": ' + filename + ', "locations":[';
+
+    content = content + "}";
+
+    download_to_file(content, filename, contentType);
   }
