@@ -68,8 +68,6 @@ function fill_with_lat_lon() {
 
     var table = document.getElementById('table-body');
     if (table) {
-        console.log("Processing table elements")
-        console.log("There are " + table.rows.length + " rows")
         for (let row of table.rows) 
         {
             let loc = row.cells[0].innerText;
@@ -92,10 +90,6 @@ function fill_with_lat_lon() {
     content_str = JSON.stringify(content);
 
     console.log("content: ", content_str);
-
-    // jsonObj = JSON.parse(content_str);
-
-    // console.log("JSON object: ", jsonObj);
 
     download_to_file(content_str, filename, contentType);
   }
