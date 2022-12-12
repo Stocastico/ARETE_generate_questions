@@ -1,4 +1,7 @@
 function fill_with_lat_lon() {
+    const COL_LAT = 3;
+    const COL_LON = 4;
+
     console.log("Fill with lat lon - Table");
     var table = document.getElementById('table-body');
     if (table) {
@@ -9,7 +12,7 @@ function fill_with_lat_lon() {
             let location = row.cells[0].innerText
             console.log("Current location: " + location);
 
-            var url = "https://en.wikipedia.org/w/api.php?action=query&prop=coordinates&titles=" + location + "&format=json&origin=*"; 
+            var url = "https://es.wikipedia.org/w/api.php?action=query&prop=coordinates&titles=" + location + "&format=json&origin=*"; 
 
             const getJsonData = async() => {
                 let data = await fetch(url).then((response) => {
@@ -36,8 +39,8 @@ function fill_with_lat_lon() {
                 var lon = page.coordinates[0].lon
                 console.log("Latitute: " + lat);
                 console.log("Longitude: " + lon);
-                row.cells[2].innerText = (Math.round(lat * 100) / 100).toFixed(3);
-                row.cells[3].innerText = (Math.round(lon * 100) / 100).toFixed(3);
+                row.cells[COL_LAT].innerText = (Math.round(lat * 100) / 100).toFixed(2);
+                row.cells[COL_LON].innerText = (Math.round(lon * 100) / 100).toFixed(2);
             }
 
             getData();
@@ -64,19 +67,28 @@ function fill_with_lat_lon() {
     content.quizName = filename;
     console.log("Content object: ", content);
 
+    const COL_LOCATION = 0;
+    const COL_DIFF = 1;
+    const COL_CONT = 2;
+    const COL_LAT = 3;
+    const COL_LON = 4;
+
     const questions = [];
 
     var table = document.getElementById('table-body');
     if (table) {
         for (let row of table.rows) 
         {
-            let loc = row.cells[0].innerText;
-            let dif = row.cells[1].innerText;
-            let lat = row.cells[2].innerText;
-            let lon = row.cells[3].innerText;
+            let loc = row.cells[COL_LOCATION].innerText;
+            let dif = row.cells[COL_DIFF].innerText;
+            let con = row.cells[COL_CONT].querySelector('.cont').value.toUpperCase();
+            let lat = row.cells[COL_LAT].innerText;
+            let lon = row.cells[COL_LON].innerText;
+
 
             const q = {
                 location: loc,
+                continent: con,
                 difficulty: dif,
                 latitude: lat,
                 longitude: lon

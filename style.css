@@ -10,18 +10,21 @@ body {
     table-layout: fixed;
 }
 .location {
-    width: 25%;
+    width: 19%;
     background: tomato;
+}
+.continent {
+    width: 10%;
 }
 .difficulty {
     width: 5%;
     background: turquoise
 }
 .coordinate {
-    width: 10%;
+    width: 8%;
 }
   /* see me */
-td {
+td select {
     border: solid;
 }
 
