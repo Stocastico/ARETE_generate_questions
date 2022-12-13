@@ -1,5 +1,12 @@
 let wiki_version = "es";
 
+function set_wiki_version(val) {
+    if (val === "en")
+        wiki_version = "en";
+    else
+        wiki_version = "es"; // de momento solo español o inglés
+}
+
 function fill_with_lat_lon() {
     const COL_LAT = 3;
     const COL_LON = 4;
@@ -14,7 +21,7 @@ function fill_with_lat_lon() {
             let location = row.cells[0].innerText
             console.log("Current location: " + location);
 
-            var url = "https://es.wikipedia.org/w/api.php?action=query&prop=coordinates&titles=" + location + "&format=json&origin=*"; 
+            var url = "https://" + wiki_version + ".wikipedia.org/w/api.php?action=query&prop=coordinates&titles=" + location + "&format=json&origin=*"; 
 
             const getJsonData = async() => {
                 let data = await fetch(url).then((response) => {
