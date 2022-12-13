@@ -1,3 +1,5 @@
+let wiki_version = "es";
+
 function fill_with_lat_lon() {
     const COL_LAT = 3;
     const COL_LON = 4;
